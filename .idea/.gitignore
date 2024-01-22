@@ -1,0 +1,16 @@
+# Virtual environments
+venv*/
+.venv*/
+
+# IDE settings
+.idea
+.vscode
+
+# Caches
+*.py[cod]
+__pycache__/
+
+# Notebook history
+.ipynb_checkpoints
+
+.DS_Store
