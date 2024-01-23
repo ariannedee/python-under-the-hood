@@ -1,3 +1,6 @@
+"""
+To tokenize a file, run $ python3 –m tokenize <filename.py>
+"""
 import io
 import token
 import tokenize

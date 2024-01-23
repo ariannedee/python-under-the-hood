@@ -5,6 +5,8 @@ Q: Given a python .pyc file, is there a tool that let me view the bytecode?
 Answer link: https://stackoverflow.com/a/67428655
 
 To generate a .pyc file, run $ python -m compileall <filename.py>
+
+To view the byte-code for a file, run $ python3 -m dis <filename.py>
 """
 import binascii
 import dis
