@@ -3,6 +3,8 @@ From Stack Overflow
 Q: Given a python .pyc file, is there a tool that let me view the bytecode?
 
 Answer link: https://stackoverflow.com/a/67428655
+
+To generate a .pyc file, run $ python -m compileall <filename.py>
 """
 import binascii
 import dis
@@ -54,4 +56,4 @@ def view_pyc_file(path):
 
 
 if __name__ == '__main__':
-    view_pyc_file('__pycache__/hello.cpython-312.pyc')
+    view_pyc_file('__pycache__/hello.cpython-311.pyc')
