@@ -3,6 +3,7 @@ from datetime import date, timedelta
 
 class Goal:
     """Track a goal that you want to perform for X days"""
+    class_attr = True
 
     def __init__(self, name, num_days, days_since_start=0):
         """
@@ -15,8 +16,11 @@ class Goal:
         self.start_date = date.today() - timedelta(days=days_since_start)
         for i in range(num_days):
             setattr(self, f'day_{i + 1}', False)
+        self._test = 3
 
     def complete(self, day, note=None):
+        _test = 1
+        test = 2
         setattr(self, f'day_{day}', True)
         if note:
             setattr(self, f'day_{day}_note', note)
