@@ -14,6 +14,9 @@ class Book:
         self.author = author
         print(f'__init__ called with {name}, {author}')
 
+    def __del__(self):
+        print(f"{self} destroyed")
+
     def __str__(self):
         return f"{self.name} by {self.author}"
 
@@ -55,3 +58,6 @@ if __name__ == '__main__':
         book1 > book2
     except TypeError as e:
         print(repr(e))
+
+    del book1
+    print('Book 1 not destroyed yet because of reference in books')
