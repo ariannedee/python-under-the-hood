@@ -7,7 +7,9 @@ dir - https://docs.python.org/3/library/functions.html#dir
   dir(): returns a list of names in the current scope (keys of locals() dict)
   dir(obj): attempts to return a list of valid attributes for the object (i.e. obj.{attr})
 """
-import pprint
+import inspect
+
+from pprint import pprint
 
 
 class ClassA:
@@ -34,50 +36,62 @@ def a_func(y):
     """A function"""
     z = 7
     print('\nlocal vars()')
-    pprint.pprint(vars())
+    pprint(vars())
     print('\nlocal dir()')
-    pprint.pprint(dir())
+    pprint(dir())
 
 
 # Locals
 a_func(6)
 
 # Globals
-print('\nglobal vars()')
-pprint.pprint(vars())
-print('\nglobal dir()')
-pprint.pprint(dir(), compact=True)
+print('\n--- global vars() ---\n')
+pprint(vars())
+print('\n--- global dir() ---\n')
+pprint(dir(), compact=True)
 
 # Function
-print('\nvars(a_func)')
+print('\n--- vars(a_func) ---\n')
 print(vars(a_func))
-print('\nlocal dir(a_func)')
-pprint.pprint(dir(a_func), compact=True)
+print('\n--- local dir(a_func) ---\n')
+pprint(dir(a_func), compact=True)
 
 # Module
-print('\nvars(pprint)')
+print('\n--- vars(pprint) ---\n')
 print(vars(pprint))
-print('\nlocal dir(pprint)')
-pprint.pprint(dir(pprint), compact=True)
+print('\n--- local dir(pprint) ---\n')
+pprint(dir(pprint), compact=True)
 
 # Class
-print('\nvars(ClassA)')
-pprint.pprint(vars(ClassA))
-print('\ndir(ClassA)')
-pprint.pprint(dir(ClassA), compact=True)
-print('\nvars(inst_A)')
-pprint.pprint(vars(inst_A))
-print('\ndir(inst_A)')
-pprint.pprint(dir(inst_A), compact=True)
+print('\n--- vars(ClassA) ---\n')
+pprint(vars(ClassA))
+print('\n--- dir(ClassA) ---\n')
+pprint(dir(ClassA), compact=True)
+print('\n--- vars(inst_A) ---\n')
+pprint(vars(inst_A))
+print('\n--- dir(inst_A) ---\n')
+pprint(dir(inst_A), compact=True)
 
 # Subclass
-print('\nvars(ClassB)')
-pprint.pprint(vars(ClassB))
-print('\ndir(ClassB)')
-pprint.pprint(dir(ClassB), compact=True)
-print('\nvars(inst_B)')
-pprint.pprint(vars(inst_B))
-print('\ndir(inst_B)')
-pprint.pprint(dir(inst_B), compact=True)
+print('\n--- vars(ClassB) ---\n')
+pprint(vars(ClassB))
+print('\n--- dir(ClassB) ---\n')
+pprint(dir(ClassB), compact=True)
+print('\n--- getmembers(ClassB) ---\n')
+pprint(inspect.getmembers(ClassB))
+print('\n--- vars(inst_B) ---\n')
+pprint(vars(inst_B))
+print('\n--- dir(inst_B) ---\n')
+pprint(dir(inst_B), compact=True)
+print('\n--- getmembers(inst_B) ---\n')
+pprint(inspect.getmembers(inst_B))
+print('\n--- getmembers(inst_B) that are routines ---\n')
+pprint(inspect.getmembers(inst_B, predicate=inspect.isroutine))
+print('\n--- getmembers(inst_B) that are not routines (data attributes) ---\n')
+pprint(inspect.getmembers(inst_B, predicate=lambda x: not inspect.isroutine(x)))
 
-pprint.pprint(vars(ClassB.__init__))
+# Code
+print('\n--- getsource(ClassB) ---\n')
+print(inspect.getsource(ClassB))
+print('\n--- getsourcelines(ClassB) ---\n')
+pprint(inspect.getsourcelines(ClassB))
