@@ -15,3 +15,6 @@ __pycache__/
 build/
 dist/
 *.so
+
+# Notebook
+.ipynb_checkpoints/
