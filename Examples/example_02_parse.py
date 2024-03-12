@@ -1,3 +1,7 @@
+"""
+Takes some code as a string and displays the abstract syntax tree (AST)
+produced after parsing it.
+"""
 import ast
 
 code = """

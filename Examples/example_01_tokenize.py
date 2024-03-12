@@ -1,5 +1,7 @@
 """
-To tokenize a file, run $ python3 –m tokenize <filename.py>
+Takes some code as a string and prints out the tokens.
+
+To tokenize a file, run $ python3 –m tokenize <file.py>
 """
 import io
 import token

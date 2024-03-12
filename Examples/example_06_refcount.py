@@ -1,3 +1,4 @@
+"""Check the number of references to an object. Will always be at least 1."""
 import sys
 
 a = []

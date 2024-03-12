@@ -1,3 +1,6 @@
+"""
+Generate a code object from a code string.
+"""
 from dis import disassemble
 
 code_str = f"""
