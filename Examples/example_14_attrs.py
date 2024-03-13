@@ -16,17 +16,13 @@ class Goal:
         self.start_date = date.today() - timedelta(days=days_since_start)
         for i in range(num_days):
             setattr(self, f'day_{i + 1}', False)
-        self._test = 3
 
     def complete(self, day, note=None):
-        _test = 1
-        test = 2
         setattr(self, f'day_{day}', True)
         if note:
             setattr(self, f'day_{day}_note', note)
 
-    @property
-    def summary(self):
+    def get_summary(self):
         result = f"{self.name} for {self.num_days} days"
         days_since_start = (date.today() - self.start_date).days
 
@@ -53,8 +49,8 @@ class Goal:
 if __name__ == '__main__':
     goal = Goal('Exercise 20 mins', num_days=20, days_since_start=7)
     goal.complete(1, 'ran 20 mins')
-    goal.complete(3, 'yoga')
+    goal.complete(3, 'HIIT class')
     goal.complete(5)
     goal.complete(6, 'walked to dinner')
 
-    print(goal.summary)
+    print(goal.get_summary())
