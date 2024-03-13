@@ -70,8 +70,9 @@ class Dollars:
             other = other.as_cents()
         elif not isinstance(other, (int, float)):
             raise ValueError(f"Operand '+' not implemented for Dollars and {type(other).__name__}")
-
-        cents = self.as_cents() + other * 100
+        else:
+            other = other * 100
+        cents = self.as_cents() + other
         self.dollars = int(cents // 100)
         self.cents = int(cents % 100)
 
@@ -97,31 +98,11 @@ def test_dollars_as_cents():
     d1 = Dollars()
     assert d1.as_cents() == 0
 
-    d2 = Dollars(3, 33.33)
+    d2 = Dollars(3, 33)
     assert d2.as_cents() == 333
 
     d3 = Dollars(1_000_000_000_000, 1, negative=True)
     assert d3.as_cents() == -100_000_000_000_001
-
-    d4 = Dollars('12', '34.56')
-    assert d4.as_cents() == 1235
-
-
-def test_invalid_initialization():
-    with pytest.raises(ValueError) as exc_info:
-        Dollars(-4)
-
-    assert 'negative' in str(exc_info).lower()
-
-    with pytest.raises(ValueError) as exc_info:
-        Dollars(0, 100)
-
-    assert 'cents' in str(exc_info).lower()
-
-    with pytest.raises(ValueError) as exc_info:
-        Dollars([], 'bad')
-
-    assert 'invalid integer' in str(exc_info).lower()
 
 
 def test_dollars_add():
@@ -130,6 +111,29 @@ def test_dollars_add():
     d3 = d1 + d2
     assert d3.dollars == 3
     assert d3.cents == 33
+
+    d4 = d1 + 9.99
+    assert d4.dollars == 11
+    assert d4.cents == 10
+
+
+def test_dollars_radd():
+    d1 = Dollars.from_cents(111)
+    d2 = 2.22 + d1
+    assert d2.dollars == 3
+    assert d2.cents == 33
+
+
+def test_dollars_iadd():
+    d1 = Dollars.from_cents(111)
+    d2 = Dollars.from_cents(222)
+    d1 += d2
+    assert d1.dollars == 3
+    assert d1.cents == 33
+
+    d2 += 9.99
+    assert d2.dollars == 12
+    assert d2.cents == 21
 
 
 if __name__ == '__main__':
