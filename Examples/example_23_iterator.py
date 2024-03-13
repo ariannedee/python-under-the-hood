@@ -34,9 +34,6 @@ class LinkedList:
     def __iter__(self):
         return LinkedListIterator(self.head)
 
-    def __reversed__(self):
-        return LinkedListIterator
-
     def __str__(self):
         contents = " -> ".join(str(i) for i in self)
         return f'{contents}'
@@ -65,7 +62,10 @@ if __name__ == '__main__':
     for i in ll:
         print(i)
 
-    for i in reversed(ll):
-        print(i)
+    try:
+        for i in reversed(ll):
+            print(i)
+    except TypeError as e:
+        print(repr(e))
 
     print(repr(ll))
