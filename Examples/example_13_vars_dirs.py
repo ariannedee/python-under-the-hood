@@ -8,8 +8,9 @@ dir - https://docs.python.org/3/library/functions.html#dir
   dir(obj): attempts to return a list of valid attributes for the object (i.e. obj.{attr})
 """
 import inspect
-
 from pprint import pprint
+
+import hello
 
 
 class ClassA:
@@ -43,6 +44,7 @@ def a_func(y):
 
 # Locals
 a_func(6)
+a_func.num_calls = 1
 
 # Globals
 print('\n--- global vars() ---\n')
@@ -57,10 +59,12 @@ print('\n--- local dir(a_func) ---\n')
 pprint(dir(a_func), compact=True)
 
 # Module
-print('\n--- vars(pprint) ---\n')
-print(vars(pprint))
-print('\n--- local dir(pprint) ---\n')
-pprint(dir(pprint), compact=True)
+print('\n--- vars(hello) ---\n')
+module_dict = vars(hello)
+del module_dict['__builtins__']  # Don't display builtins
+pprint(module_dict)
+print('\n--- local dir(hello) ---\n')
+pprint(dir(hello), compact=True)
 
 # Class
 print('\n--- vars(ClassA) ---\n')
