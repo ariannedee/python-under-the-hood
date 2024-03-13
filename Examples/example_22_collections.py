@@ -187,8 +187,11 @@ if __name__ == '__main__':
     print(f"{ll[::-1]=}")
 
     del ll[0]
-
     ll.append(4)
+
+    for i in ll:
+        print(i)
+
     for i in reversed(ll):
         print(i)
 
