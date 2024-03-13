@@ -181,7 +181,7 @@ if __name__ == '__main__':
     print(ll * 4)
     ll += ['A', 'B']
     print(ll)
-    print(f"{ll[2.0]=}")
+    print(f"{ll[2]=}")
     print(f"{ll[-2]=}")
     print(f"{ll[1:3]=}")
     print(f"{ll[::-1]=}")
