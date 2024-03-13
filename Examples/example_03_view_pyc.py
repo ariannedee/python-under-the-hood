@@ -58,4 +58,4 @@ def view_pyc_file(path):
 
 
 if __name__ == '__main__':
-    view_pyc_file('__pycache__/hello.cpython-311.pyc')
+    view_pyc_file('__pycache__/hello.cpython-312.pyc')
