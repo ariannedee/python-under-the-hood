@@ -79,7 +79,7 @@ if __name__ == '__main__':
     }
     print(num_reads)  # book1 == book2 and hash(book1) == hash(book2) so only 1 entry made
 
-    print(f"I LOVED {book1:u}")  # Calls __format__ with 'u'
+    print(f"I loved {book1:u}")  # Calls __format__ with 'u'
 
     del book1
     print('Book 1 not destroyed yet because of reference in books')
