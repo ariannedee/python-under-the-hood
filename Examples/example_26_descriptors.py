@@ -42,4 +42,3 @@ if __name__ == '__main__':
     obj.b = 2
     print(f"{AClass.b=}")
     print(f"{obj.b=}")
-
