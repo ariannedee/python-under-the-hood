@@ -1,3 +1,4 @@
+"""The global keyword can be used to alter a global variable within a function"""
 num_calls = 0
 
 

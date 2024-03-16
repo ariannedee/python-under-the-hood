@@ -1,4 +1,4 @@
-"""Custom SimpleEnum implementation
+"""Custom SimpleEnum implementation to show metaclasses
 
 Enum members have a name and value.
 Enums can be iterated over.

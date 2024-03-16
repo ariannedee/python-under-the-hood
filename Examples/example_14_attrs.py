@@ -1,3 +1,4 @@
+"""Use builtin attr functions to create dynamic attribute names on a custom class."""
 from datetime import date, timedelta
 
 

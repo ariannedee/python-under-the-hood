@@ -1,3 +1,5 @@
+"""Copying mutable variables.
+Shows variable reassignment, shallow copy and deep copy."""
 import copy
 
 a = [[]]

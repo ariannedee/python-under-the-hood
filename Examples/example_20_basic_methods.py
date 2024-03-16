@@ -1,3 +1,4 @@
+"""Book class that implements basic class dunder methods"""
 import copy
 
 

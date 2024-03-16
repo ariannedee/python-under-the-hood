@@ -1,3 +1,6 @@
+"""Use the __slots__ attribute to define what attributes a class can have, without relying on __dict__."""
+
+
 class WithoutSlots:
     def __init__(self):
         self.attr_1 = 1

@@ -1,3 +1,9 @@
+"""Descriptors
+MyClassDescriptor creates a descriptor set on class (default is 10)
+MyInstanceDescriptor creates a descriptor with the value set on an instance
+"""
+
+
 class MyClassDescriptor:
     def __init__(self):
         self.value = 10

@@ -1,3 +1,7 @@
+"""Altering immutable variables means pointing to a new object at a new location.
+In CPython, the id is an int representing the memory location of an object."""
+
+
 def print_id(obj):
     print(f"""ID of {obj}:
     {id(obj)}

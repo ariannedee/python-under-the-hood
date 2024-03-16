@@ -1,3 +1,5 @@
+"""Simple LinkedList using a custom iterator for __iter__ instead of a generator.
+Iterators must implement __iter__ and __next__."""
 class LinkedListIterator:
     def __init__(self, node):
         self.node = node

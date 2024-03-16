@@ -1,3 +1,13 @@
+""" Context manager for printing to the console in a different color.
+Exceptions are suppressed and printed out in red.
+
+Codes are 'r', 'g', 'y', 'b' and 'p', for red, green, yellow, blue and purple.
+
+with ColorConsole(code):
+    # prints to the console with a color defined by code
+"""
+
+
 class ColorConsole:
     RED = '\33[31m'
     GREEN = '\33[32m'
@@ -37,6 +47,7 @@ class ColorConsole:
         # return True if you don't want exceptions to be propagated
         return True
 
+    # Async functions used in example 27
     async def __aenter__(self):
         return self.__enter__()
 

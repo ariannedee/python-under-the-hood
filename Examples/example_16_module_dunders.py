@@ -1,4 +1,4 @@
-"""Some documentation for this module"""
+"""Show the dunder variables available on modules"""
 from pprint import pprint
 
 import hello

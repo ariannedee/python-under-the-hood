@@ -1,3 +1,11 @@
+"""Show the variables at different scopes:
+- local (in function)
+- enclosed (in outer function)
+- global
+- builtins
+
+Makes use of locals(), globals() and vars() builtin functions
+"""
 from math import pi
 from pprint import pprint
 
@@ -28,7 +36,7 @@ area_1 = circumference(1)
 area_2 = circumference(2)
 
 print('global:')
-pprint(locals())
+pprint(globals())
 print()
 
 print('builtins:')

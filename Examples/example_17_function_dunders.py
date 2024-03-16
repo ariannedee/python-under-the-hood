@@ -1,3 +1,4 @@
+"""Show the dunder variables available on functions"""
 from a_package.a_module import AClass
 
 

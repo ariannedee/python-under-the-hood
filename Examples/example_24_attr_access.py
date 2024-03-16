@@ -1,3 +1,6 @@
+"""Customizing attribute access"""
+
+
 class SharedAttributes:
     """Setting an attribute sets it on every instance of the class"""
     class_dict = {}

@@ -1,3 +1,5 @@
+"""The nonlocal keyword can be used to alter an outer function variable within an inner function"""
+
 var = 1
 
 

@@ -1,7 +1,7 @@
 """
 Dollars class that supports number operations.
   - Limits values to 2 decimal places.
-  - Floats get rounded (up or down) when converting to Dollars.
+  - Supports addition between Dollars, int and float
 """
 import pytest
 

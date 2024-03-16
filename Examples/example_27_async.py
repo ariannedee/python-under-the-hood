@@ -1,3 +1,6 @@
+"""Asynchronously retrieve cat facts using aiohttp library
+Uses an async context manager of ColorConsole (from example 25)
+"""
 import asyncio
 
 from aiohttp import ClientSession

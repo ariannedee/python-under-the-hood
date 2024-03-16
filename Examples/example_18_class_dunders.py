@@ -1,3 +1,6 @@
+"""Show the dunder variables available on custom classes"""
+
+
 class Class1:
     """Class 1 docs"""
     class_attr_1: str = '1'
