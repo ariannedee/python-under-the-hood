@@ -44,7 +44,14 @@ Clone the repository.
 2. Click "Download ZIP"
 3. Unzip it and move the **python-under-the-hood-main** folder to a convenient location
 
-### 4. At the beginning of class, download the resources
+### 4. Install package dependencies
+Optional: set up a new virtual environment
+
+Then install dependencies in `requirements.txt`.
+
+`$ pip install -r requirements.txt`
+
+### 5. At the beginning of class, download the resources
 When you have signed in to the class,
 the **Resources** widget will have PDFs for the slides.
 
