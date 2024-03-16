@@ -1,4 +1,7 @@
-from copy import deepcopy
+"""Emulate a sequence with a LinkedList class.
+Supports +, *, iteration, len(), """
+from copy import copy
+
 
 class LinkedList:
     def __init__(self, values=None):
@@ -6,9 +9,13 @@ class LinkedList:
         self.tail = None
         if values:
             for value in values:
+                if isinstance(value, Node):
+                    value = value.value
                 self.append(value)
 
     def append(self, value):
+        if isinstance(value, Node):
+            value = value.value
         node = Node(value)
         if self.head is None:
             self.head = node
@@ -18,16 +25,47 @@ class LinkedList:
             self.tail = node
 
     def count(self, value):
-        ...
+        num = 0
+        for node in self:
+            if node.value == value:
+                num += 1
+        return num
 
     def index(self, value):
-        ...
+        for i, node in enumerate(self):
+            if node.value == value:
+                return i
+        raise ValueError(f'{repr(value)} is not in LinkedList')
 
     def extend(self, iter):
-        ...
+        self.__iadd__(iter)
 
     def insert(self, index, value):
-        ...
+        if not isinstance(index, int):
+            raise TypeError(f"index should be type 'int' but got '{type(index).__name__}'")
+        if index < 0:
+            index = len(self) + index + 1
+        elif index == 0:
+            node = Node(value)
+            node.next = self.head
+            self.head = node
+            return
+
+        cur_i = 1
+        cur_node = self.head
+        while cur_node is not None:
+            if cur_i == index:
+                new_node = Node(value)
+                next_node = cur_node.next
+                cur_node.next = new_node
+                new_node.next = next_node
+                return
+            cur_i += 1
+            cur_node = cur_node.next
+        new_node = Node(value)
+        next_node = cur_node.next
+        cur_node.next = new_node
+        new_node.next = next_node
 
     def pop(self):
         ...
@@ -41,31 +79,45 @@ class LinkedList:
     def sort(self):
         ...
 
+    def copy(self):
+        new_ll = LinkedList()
+        for node in self:
+            new_ll.append(node.value)
+        return new_ll
+
     def __len__(self):
         count = 0
         for _ in self:
             count += 1
         return count
 
-    def __getitem__(self, item):
-        as_list = [i for i in self]
+    def __getitem__(self, idx):
+        as_list = list(self)
         try:
-            result_from_list = as_list.__getitem__(item)
+            result_from_list = as_list.__getitem__(idx)
         except TypeError as e:
             raise TypeError(str(e).replace('list', 'LinkedList'))
         if isinstance(result_from_list, list):
             return LinkedList(result_from_list)
         return result_from_list
 
-    def __setitem__(self, key, value):
-        if isinstance(key, slice):
+    def __setitem__(self, idx, value):
+        if isinstance(idx, slice):
             raise TypeError('LinkedList only supports single item assignment')
-        self[key].value = value
+        as_list = [n for n in self]
+        print(repr(as_list))
+        try:
+            node_to_edit = as_list.__getitem__(idx)
+            node_to_edit.value = value
+        except TypeError as e:
+            raise TypeError(str(e).replace('list', 'LinkedList'))
 
     def __delitem__(self, key):
         if isinstance(key, slice):
             raise TypeError('LinkedList only supports single item deletion')
-
+        len_list = len(self)
+        if key < 0:
+            key = len_list + key
         index = 0
         prev = None
         node = self.head
@@ -83,23 +135,22 @@ class LinkedList:
     def __iter__(self):
         node = self.head
         while node is not None:
-            yield node.value
+            yield node
             node = node.next
 
     def __add__(self, other):
-        new_ll = deepcopy(self)
         if not is_iter(other):
             raise TypeError(f'can only concatenate an iterable (not {type(other).__name__}) to LinkedList')
+
+        new_ll = self.copy()
         for val in other:
-            if isinstance(val, Node):
-                val = val.value
             new_ll.append(val)
         return new_ll
 
     def __radd__(self, other):
-        other_copy = deepcopy(other)
-        for val in self:
-            other_copy.append(val)
+        other_copy = copy(other)
+        for node in self:
+            other_copy.append(node.value)
         return other_copy
 
     def __iadd__(self, other):
@@ -112,7 +163,7 @@ class LinkedList:
         return self
 
     def __mul__(self, other):
-        new_ll = deepcopy(self)
+        new_ll = self.copy()
         if not isinstance(other, int):
             raise TypeError(f"can't multiply sequence by non-int of type '{type(other).__name__}'")
 
@@ -120,9 +171,8 @@ class LinkedList:
             return LinkedList()
 
         for i in range(other):
-            vals = (val for val in self)
-            for val in vals:
-                new_ll.append(val)
+            for node in self:
+                new_ll.append(node)
         return new_ll
 
     def __imul__(self, other):
@@ -137,14 +187,19 @@ class LinkedList:
                 del node
 
         for i in range(other - 1):
-            vals = (val for val in self)
-            for val in vals:
-                new_ll.append(val)
+            for node in self:
+                new_ll.append(node)
         self.__iadd__(new_ll)
         return self
 
+    def __contains__(self, item):
+        for node in self:
+            if node.value == item:
+                return True
+        return False
+
     def __str__(self):
-        contents = " -> ".join(repr(i) for i in self)
+        contents = " -> ".join(str(i) for i in self)
         if not contents:
             return f'Empty'
         return f'{contents}'
@@ -176,24 +231,46 @@ def is_iter(obj):
 
 if __name__ == '__main__':
     ll = LinkedList([1, 2, 3])
+
+    # __add__
     print(ll + LinkedList(['a', 'b', 'c']))
+
+    # __radd__
     print(['a', 'b', 'c'] + ll)
+
+    # __mul__
     print(ll * 4)
+
+    # __iadd__
     ll += ['A', 'B']
     print(ll)
+
+    # __getitem__, printing with = calls repr()
     print(f"{ll[2]=}")
     print(f"{ll[-2]=}")
     print(f"{ll[1:3]=}")
     print(f"{ll[::-1]=}")
 
-    del ll[0]
-    ll.append(4)
+    # __setitem__
+    ll[-4] = 100
+    print(ll)
 
+    # __delitem__
+    del ll[-2]
+    print(ll)
+
+    # __iter__
     for i in ll:
-        print(i)
+        print(repr(i))
 
+    # __contains__
+    if 100 in ll:
+        print("Found 100")
+
+    # __reversed__ not implemented, but __len__ and __iter__ are
     for i in reversed(ll):
         print(i)
 
-    ll *= 0
+    # __imul__
+    ll *= 2
     print(ll)
