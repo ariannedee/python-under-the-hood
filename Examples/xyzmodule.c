@@ -1,6 +1,10 @@
 /* Extending Python with C: https://docs.python.org/3/extending/extending.html
 Creates a module named 'xyz' that has a function 'echo' that prints the input to the console twice
 
+To install locally (without editing CPython):
+$ python setup.py build_ext --inplace
+See setup.py for more info
+
 To add extension to a Python executable:
 1. Move this to cpython/Modules
 2. Add "xyz xyzmodule.o" to cpython/Modules/Setup.local
@@ -8,10 +12,6 @@ To add extension to a Python executable:
 4. Run Python
   >> import xyz
   >> xyz.echo('hello world')
-
-To install locally (without editing CPython):
-$ python setup.py build_ext --inplace
-See setup.py for more info
 */
 
 #define PY_SSIZE_T_CLEAN
