@@ -1,11 +1,10 @@
 """Use builtin attr functions to create dynamic attribute names on a custom class."""
 from datetime import date, timedelta
+from pprint import pprint
 
 
 class Goal:
     """Track a goal that you want to perform for X days"""
-    class_attr = True
-
     def __init__(self, name, num_days, days_since_start=0):
         """
         :param name: Description of the goal
@@ -53,5 +52,7 @@ if __name__ == '__main__':
     goal.complete(3, 'HIIT class')
     goal.complete(5)
     goal.complete(6, 'walked to dinner')
+
+    pprint(vars(goal))
 
     print(goal.get_summary())
