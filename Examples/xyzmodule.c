@@ -1,12 +1,12 @@
 /* Extending Python with C: https://docs.python.org/3/extending/extending.html
 Creates a module named 'xyz' that has a function 'echo' that prints the input to the console twice
 
-To install locally (without editing CPython):
+To install locally (without editing CPython or affecting your Python executable):
 $ python setup.py build_ext --inplace
 See setup.py for more info
 
-To add extension to a Python executable:
-1. Move this to cpython/Modules
+To add the extension to a Python executable (make sure you can compile CPython first):
+1. Move this file to cpython/Modules
 2. Add "xyz xyzmodule.o" to cpython/Modules/Setup.local
 3. Compile Python based on your OS (https://realpython.com/cpython-source-code-guide/)
 4. Run Python
