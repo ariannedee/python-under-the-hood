@@ -1,17 +1,21 @@
-"""The nonlocal keyword can be used to alter an outer function variable within an inner function"""
-
-var = 1
+"""The nonlocal keyword can be used to alter an outer function variable within an inner function
+If an outer function goes out of scope, the inner function can still reference it.
+"""
 
 
 def outer(var):
     def inner():
         nonlocal var
-        var = 3
+        var += 1
+        return var
 
-    print(var)  # 2
-    inner()
-    print(var)  # 3
+    print(var)
+    return inner
 
 
-outer(2)
-print(var)  # 1
+closure = outer(5)
+
+print(closure())
+print(closure())
+print(closure())
+print(closure())
