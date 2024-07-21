@@ -92,6 +92,7 @@ class LinkedList:
         return count
 
     def __getitem__(self, idx):
+        """e.g. self[1:3]"""
         as_list = list(self)
         try:
             result_from_list = as_list.__getitem__(idx)

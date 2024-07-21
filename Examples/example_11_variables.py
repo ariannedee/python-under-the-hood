@@ -11,13 +11,13 @@ def print_id(obj):
 
 
 # These are the same because they refer to the same object
-x = 123
+x = 256
 y = x
 print_id(x)
 print_id(y)
 
 # These are different because x refers to a new object
-# Same if object is interred or immortal (-5 <= x <= 255
+# Same if object is interred or immortal (-5 <= x <= 255)
 x += 1
 print_id(x)
 print_id(y)

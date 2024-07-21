@@ -49,7 +49,7 @@ class Book:
 
 
 if __name__ == '__main__':
-    book1 = Book('The Odyssey', 'Homer')  # __init__ called
+    book1 = Book('The Odyssey', 'Homer')  # __new__ and then __init__ called
     book2 = copy.copy(book1)
     print(str(book1))  # __str__ called
     print(book1)       # __str__ also called
