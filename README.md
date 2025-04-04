@@ -12,14 +12,14 @@ Before the class, please follow these instructions:
 ### 1. Ensure Python 3.9 or higher is installed
 Install the latest version here: https://www.python.org/downloads/
 
-In *PowerShell* application in Windows or *Terminal* on Mac or Linux,
+In *PowerShell* on Windows or *Terminal* on Mac or Linux,
 make sure you can access Python from the command line.
 
 1. `$ python --version`
 1. `$ python3 --version`
-1. `$ python3.12 --version` (replace 3.12 with your target version number)
-1. `$ py --version`
-1. `$ py -3.12 --version` (replace 3.12 with your target version number)
+1. `$ python3.13 --version` (replace 3.13 with your target version number)
+1. `$ py --version` on Windows
+1. `$ py -3.13 --version` (replace 3.13 with your target version number)
 
 One or more of those commands should print 
 a Python version of 3.9 or higher.
