@@ -18,7 +18,7 @@ print()
 print('a_function dunders')
 for dunder in dir(a_function):
     value = getattr(a_function, dunder)
-    if not callable(value):
+    if not callable(value) and dunder not in '__builtins__':
         print(f'{dunder}: {value}')
 
 
