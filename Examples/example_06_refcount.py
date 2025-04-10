@@ -14,4 +14,6 @@ del b
 print(sys.getrefcount(a))  # 3
 
 del a
+
 print(c)
+print(sys.getrefcount(c[0]))  # 2
