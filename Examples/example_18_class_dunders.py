@@ -21,34 +21,39 @@ class Class2(Class1):
         return 2
 
 
-print()
-print('Class1 attributes')
-for dunder in dir(Class1):
-    value = getattr(Class1, dunder)
-    if not callable(value):
-        print(f'{dunder}: {value}')
+print(f"""{Class1.__name__=}
+{Class1.__module__=}
+{Class1.__doc__=}
+{Class1.__annotations__=}
+{Class1.__type_params__=}
+{Class1.__dict__=}
+{Class1.__bases__=}
+{Class1.__mro__=}
+""")
 
-print()
-print('Class2 attributes')
-for dunder in dir(Class2):
-    value = getattr(Class2, dunder)
-    if not callable(value):
-        print(f'{dunder}: {value}')
-
+print(f"""{Class2.__name__=}
+{Class2.__module__=}
+{Class2.__doc__=}
+{Class2.__annotations__=}
+{Class2.__type_params__=}
+{Class2.__dict__=}
+{Class2.__bases__=}
+{Class2.__mro__=}
+""")
 
 instance_1 = Class1(1)
 instance_2 = Class2(2)
 
-print()
-print('instance_1 attributes')
-for dunder in dir(instance_1):
-    value = getattr(instance_1, dunder)
-    if not callable(value) or dunder == '__class__':
-        print(f'{dunder}: {value}')
+print(f"""{instance_1.__module__=}
+{instance_1.__doc__=}
+{instance_1.__annotations__=}
+{instance_1.__dict__=}
+{instance_1.__class__=}
+""")
 
-print()
-print('instance_2 attributes')
-for dunder in dir(instance_2):
-    value = getattr(instance_2, dunder)
-    if not callable(value) or dunder == '__class__':
-        print(f'{dunder}: {value}')
+print(f"""{instance_2.__module__=}
+{instance_2.__doc__=}
+{instance_2.__annotations__=}
+{instance_2.__dict__=}
+{instance_2.__class__=}
+""")
