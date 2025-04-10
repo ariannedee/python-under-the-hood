@@ -103,6 +103,7 @@ class LinkedList:
         return result_from_list
 
     def __setitem__(self, idx, value):
+        # self[idx] = 'value'
         if isinstance(idx, slice):
             raise TypeError('LinkedList only supports single item assignment')
         as_list = [n for n in self]
@@ -114,6 +115,7 @@ class LinkedList:
             raise TypeError(str(e).replace('list', 'LinkedList'))
 
     def __delitem__(self, key):
+        """del self[idx]"""
         if isinstance(key, slice):
             raise TypeError('LinkedList only supports single item deletion')
         len_list = len(self)
