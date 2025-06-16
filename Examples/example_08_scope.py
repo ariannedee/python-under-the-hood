@@ -6,7 +6,7 @@
 
 Makes use of locals(), globals() and vars() builtin functions
 """
-from math import pi
+from math import pi as PI
 from pprint import pprint
 
 r = -1000
@@ -23,7 +23,7 @@ def circumference(r):
 
         return d
 
-    area = diameter() * pi
+    area = diameter() * PI
 
     print('outer:')
     pprint(locals())
