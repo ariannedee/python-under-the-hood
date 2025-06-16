@@ -14,7 +14,8 @@ Coordinates = Tuple[float, float]
 # Function type annotations
 def get_location_name(coords: Coordinates) -> tuple:
     params = {'lat': coords[0], 'lon': coords[1], 'format': 'json', 'zoom': 12}
-    response: Response = requests.get(URL, params)
+    headers = {'User-Agent': f'Python script by <insert name or email here>'}
+    response: Response = requests.get(URL, params, headers=headers)
     response.raise_for_status()
     location_details: dict = response.json()
     address: dict = location_details['address']
@@ -47,4 +48,3 @@ try:
     a.upper()
 except Exception as e:
     print(repr(e))
-# print(__annotations__)
