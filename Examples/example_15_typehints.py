@@ -15,6 +15,7 @@ Coordinates = Tuple[float, float]
 def get_location_name(coords: Coordinates) -> tuple:
     params = {'lat': coords[0], 'lon': coords[1], 'format': 'json', 'zoom': 12}
     response: Response = requests.get(URL, params)
+    response.raise_for_status()
     location_details: dict = response.json()
     address: dict = location_details['address']
     return ((address.get('city') or address.get('town')), address['state'], address['country'])
@@ -46,3 +47,4 @@ try:
     a.upper()
 except Exception as e:
     print(repr(e))
+# print(__annotations__)
