@@ -17,3 +17,6 @@ del a
 
 print(c)
 print(sys.getrefcount(c[0]))  # 2
+
+# Immortal object
+print(sys.getrefcount(1))  # 4294967295 (or some other large number)
