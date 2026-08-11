@@ -35,9 +35,9 @@ def circumference(r):
 area_1 = circumference(1)
 area_2 = circumference(2)
 
-print('global:')
-pprint(globals())
-print()
-
 print('builtins:')
 pprint(vars(__builtins__))
+print()
+
+print('global:')
+pprint(globals())
